@@ -247,12 +247,30 @@ Dette dokumentet er en komplett guide, med alle nødvendige regler, låser, funk
 
 ---
 
-Si ifra hvis du ønsker at jeg genererer:
 
-* Full kodebase-stub for FastAPI backend
-* Eksempelfiler for frontend HTML + JS
-* Konkrete GitHub Actions CI/CD workflows
-* Låsemodul og testskript
-* Dokumentasjon for utviklere og brukere
+# SKYCODE.NO HOSTING DASHBOARD
 
-Tøllefant, dette er grunnlaget for en komplett, sikker og driftssikker hostingplattform. Klar for neste steg?
+## VIKTIGE SIKKERHETSREGLER OG LÅSER
+
+- ALLE nettverksservere MÅ KUN bruke port **8098** for API-trafikk.  
+- API-baseurl skal alltid være: `https://cp.skycode.no/api/v1`  
+- Alle API-responser SKAL være i JSON-format.  
+- Alle filoperasjoner må begrenses til `/home/skycode.no/public_html/cp/`.  
+- Alle endringer i kritiske filer skal ta backup FØR modifikasjon.  
+- Operasjoner som påvirker systemet SKAL ha eksklusiv låsing og rollback ved feil.  
+- Endringer som bryter disse reglene vil kunne føre til øyeblikkelig rollback og potensielt blokkering av commit.  
+- Enhver omgåelse eller endring av disse reglene uten godkjenning anses som kritisk sikkerhetsbrudd.
+
+**Dette er ikke et valg. Det er krav.**
+
+---
+
+## KODEKVALITET
+
+- Kommenter all kode med `# LOCK:` kommentarer for å minne om regler.  
+- Følg strenge PEP8, typehint og sikkerhetsstandarder.  
+- Test alt via CI før merge.
+
+---
+
+Les og forstå disse før du bidrar i prosjektet.
